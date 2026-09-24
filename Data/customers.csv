@@ -1,0 +1,13 @@
+customer_id,first_name,last_name,email,city,state,country,customer_segment,registration_date
+1001,Aarav,Sharma,aarav.sharma@example.com,Bengaluru,Karnataka,India,Premium,2024-01-15
+1002,Priya,Reddy,priya.reddy@example.com,Hyderabad,Telangana,India,Standard,2024-02-20
+1003,Rahul,Kumar,rahul.kumar@example.com,Chennai,Tamil Nadu,India,Basic,2024-03-12
+1004,Sneha,Patel,sneha.patel@example.com,Mumbai,Maharashtra,India,Premium,2024-01-28
+1005,Vikram,Singh,vikram.singh@example.com,Delhi,Delhi,India,Standard,2024-04-05
+1006,Ananya,Das,ananya.das@example.com,Kolkata,West Bengal,India,Premium,2024-05-18
+1007,Kiran,Naidu,kiran.naidu@example.com,Pune,Maharashtra,India,Basic,2024-06-10
+1008,Neha,Verma,neha.verma@example.com,Jaipur,Rajasthan,India,Standard,2024-07-22
+1009,Rohit,Mehta,rohit.mehta@example.com,Ahmedabad,Gujarat,India,Premium,2024-08-14
+1010,Divya,Iyer,divya.iyer@example.com,Coimbatore,Tamil Nadu,India,Basic,2024-09-03
+1011,Arjun,Joshi,arjun.joshi@example.com,Bengaluru,Karnataka,India,Standard,2024-09-19
+1012,Meera,Nair,meera.nair@example.com,Kochi,Kerala,India,Premium,2024-10-11

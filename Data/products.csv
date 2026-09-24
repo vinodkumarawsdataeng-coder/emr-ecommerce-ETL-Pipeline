@@ -1,0 +1,11 @@
+product_id,product_name,category,subcategory,unit_price,cost_price
+2001,Wireless Headphones,Electronics,Audio,1250,500
+2002,USB-C Cable,Electronics,Accessories,300,100
+2003,Mechanical Keyboard,Electronics,Computer Accessories,1800,700
+2004,Running Shoes,Sports,Footwear,1600,800
+2005,Smart Watch,Electronics,Wearables,4500,2200
+2006,Laptop Backpack,Bags,Travel,5200,2500
+2007,Water Bottle,Sports,Fitness,700,250
+2008,Bluetooth Speaker,Electronics,Audio,1800,900
+2009,Office Chair,Furniture,Office,1500,700
+2010,4K Monitor,Electronics,Computer Accessories,6500,3500
