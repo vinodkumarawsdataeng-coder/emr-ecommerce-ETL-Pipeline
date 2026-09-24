@@ -237,7 +237,7 @@ Partitioning helps reduce the amount of data scanned when queries filter by year
 Aggregated Datasets
 Category Sales
 
-## Location:
+Location:
 
 s3://emr-ecommerce-2026/curated/category_sales/
 
