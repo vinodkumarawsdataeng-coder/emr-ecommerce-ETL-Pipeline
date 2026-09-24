@@ -14,21 +14,22 @@ Amazon Athena is then used to query and validate the curated data through SQL.
 
 ### Data Flow
 
+```text
 CSV Files
-↓
+    ↓
 Amazon S3 - Raw Layer
-↓
+    ↓
 Amazon EMR + PySpark
-↓
-Data Cleaning and Transformation
-↓
-Amazon S3 - Curated Layer
-↓
+    ↓
+Data Cleaning & Transformation
+    ↓
+Amazon S3 - Curated Parquet
+    ↓
 AWS Glue Data Catalog
-↓
+    ↓
 Amazon Athena
-↓
-SQL Validation and Analytics
+    ↓
+SQL Validation & Analytics
 
 ---
 
