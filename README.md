@@ -10,7 +10,7 @@ Amazon Athena is then used to query and validate the curated data through SQL.
 
 ## Architecture
 
-![AWS EMR E-Commerce Architecture] (Diagrams and screenshot/Project Architecture diagram.png)
+(https://github.com/vinodkumarawsdataeng-coder/emr-ecommerce-ETL-Pipeline/blob/afe93152907c44e1f5f21a676b20021cb7b10859/Diagrams%20and%20screenshot/Project%20Architecture%20diagram.png)
 
 ### Data Flow
 
