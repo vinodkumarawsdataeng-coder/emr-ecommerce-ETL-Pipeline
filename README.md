@@ -284,26 +284,24 @@ customer_sales
 ecommerce_sales
 
 # The ecommerce_sales table uses:
-
 order_year
 order_month
-
 as partitions.
 
 Athena can then query the curated Parquet data directly from S3.
 
 ## Athena Validation Queries
-# 1. Total Records
+1. Total Records
 SELECT
     COUNT(*) AS total_records
 FROM emr_ecommerce_db.ecommerce_sales;
 
-# 2. Total Revenue
+2. Total Revenue
 SELECT
     SUM(revenue) AS total_revenue
 FROM emr_ecommerce_db.ecommerce_sales;
 
-# 3. Revenue by Category
+3. Revenue by Category
 SELECT
     category,
     SUM(revenue) AS total_revenue,
@@ -312,7 +310,7 @@ FROM emr_ecommerce_db.ecommerce_sales
 GROUP BY category
 ORDER BY total_revenue DESC;
 
-# 4. Revenue by Customer
+4. Revenue by Customer
 SELECT
     customer_id,
     first_name,
