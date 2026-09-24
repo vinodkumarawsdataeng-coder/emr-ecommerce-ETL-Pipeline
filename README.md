@@ -218,7 +218,7 @@ Curated Data
 The detailed sales data is stored in Parquet format.
 
 ## The detailed dataset is partitioned using:
-
+```text
 order_year
 order_month
 
@@ -231,7 +231,7 @@ ecommerce_sales/
 │   └── order_month=3/
 │       └── part-....parquet
 └── ...
-
+```
 Partitioning helps reduce the amount of data scanned when queries filter by year or month.
 
 Aggregated Datasets
