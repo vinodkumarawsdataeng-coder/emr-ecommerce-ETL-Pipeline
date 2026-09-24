@@ -39,6 +39,7 @@ AWS Glue Data Catalog
         ▼
 Amazon Athena
 SQL Validation & Analytics
+```
 
 ---
 
