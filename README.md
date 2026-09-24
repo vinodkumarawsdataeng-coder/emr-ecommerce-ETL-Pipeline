@@ -8,27 +8,36 @@ The pipeline processes e-commerce customer, product, and order data stored in Am
 
 Amazon Athena is then used to query and validate the curated data through SQL.
 
-## Architecture
-
-(https://github.com/vinodkumarawsdataeng-coder/emr-ecommerce-ETL-Pipeline/blob/afe93152907c44e1f5f21a676b20021cb7b10859/Diagrams%20and%20screenshot/Project%20Architecture%20diagram.png)
 
 ### Data Flow
 
 ```text
-CSV Files
-    ↓
-Amazon S3 - Raw Layer
-    ↓
-Amazon EMR + PySpark
-    ↓
-Data Cleaning & Transformation
-    ↓
-Amazon S3 - Curated Parquet
-    ↓
+CSV Source Files
+        │
+        ▼
+Amazon S3
+Raw Data Layer
+        │
+        ▼
+Amazon EMR
+PySpark ETL
+        │
+        ├── Data Validation
+        ├── Duplicate Removal
+        ├── Data Cleaning
+        ├── Customer + Order + Product Joins
+        ├── Business Transformations
+        └── Aggregations
+        │
+        ▼
+Amazon S3
+Curated Parquet Layer
+        │
+        ▼
 AWS Glue Data Catalog
-    ↓
+        │
+        ▼
 Amazon Athena
-    ↓
 SQL Validation & Analytics
 
 ---
