@@ -292,16 +292,19 @@ Athena can then query the curated Parquet data directly from S3.
 
 ## Athena Validation Queries
 1. Total Records
+```
 SELECT
     COUNT(*) AS total_records
 FROM emr_ecommerce_db.ecommerce_sales;
-
-2. Total Revenue
+```
+3. Total Revenue
+```
 SELECT
     SUM(revenue) AS total_revenue
 FROM emr_ecommerce_db.ecommerce_sales;
-
+```
 3. Revenue by Category
+```
 SELECT
     category,
     SUM(revenue) AS total_revenue,
@@ -309,8 +312,9 @@ SELECT
 FROM emr_ecommerce_db.ecommerce_sales
 GROUP BY category
 ORDER BY total_revenue DESC;
-
+```
 4. Revenue by Customer
+```
 SELECT
     customer_id,
     first_name,
@@ -323,6 +327,7 @@ GROUP BY
     first_name,
     last_name
 ORDER BY total_revenue DESC;
+```
 
 ## IAM and Security
 
