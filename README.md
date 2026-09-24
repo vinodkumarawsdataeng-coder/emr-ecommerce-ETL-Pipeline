@@ -131,11 +131,13 @@ curated/
 ├── ecommerce_sales/
 ├── category_sales/
 └── customer_sales/
+
+```
 EMR PySpark ETL
 
 Amazon EMR is used to run the PySpark ETL job.
 
-The PySpark job performs the following operations:
+## The PySpark job performs the following operations:
 
 Read CSV files from Amazon S3
 Infer source schemas
@@ -159,33 +161,31 @@ The pipeline performs basic data-quality checks before transformation.
 
 Null validation
 
-Required keys are checked for NULL values:
+## Required keys are checked for NULL values:
 
 customers = customers.filter(
     col("customer_id").isNotNull()
 )
 
-Orders are validated using:
+# Orders are validated using:
 
 order_id
 customer_id
 product_id
 
-Products are validated using:
+# Products are validated using:
 
 product_id
 Duplicate removal
 
-Duplicates are removed using business keys:
+# Duplicates are removed using business keys:
 
 customers = customers.dropDuplicates(["customer_id"])
-
 orders = orders.dropDuplicates(["order_id"])
-
 products = products.dropDuplicates(["product_id"])
 Business Transformations
 
-The pipeline joins:
+## The pipeline joins:
 
 Orders
    +
@@ -195,7 +195,7 @@ Products
 
 The resulting dataset contains customer, product, and order information.
 
-Additional columns are generated:
+## Additional columns are generated:
 
 order_year
 order_month
@@ -203,12 +203,12 @@ revenue
 customer_type
 Revenue
 
-Revenue is calculated from the order-level amount:
+## Revenue is calculated from the order-level amount:
 
 revenue = order_amount
 Customer Type
 
-Customer segments are classified as:
+## Customer segments are classified as:
 
 Premium  → High Value
 Standard → Regular
@@ -217,7 +217,7 @@ Curated Data
 
 The detailed sales data is stored in Parquet format.
 
-The detailed dataset is partitioned using:
+## The detailed dataset is partitioned using:
 
 order_year
 order_month
@@ -237,11 +237,11 @@ Partitioning helps reduce the amount of data scanned when queries filter by year
 Aggregated Datasets
 Category Sales
 
-Location:
+## Location:
 
 s3://emr-ecommerce-2026/curated/category_sales/
 
-Contains:
+# Contains:
 
 category
 total_revenue
@@ -249,11 +249,11 @@ total_orders
 average_order_value
 Customer Sales
 
-Location:
+# Location:
 
 s3://emr-ecommerce-2026/curated/customer_sales/
 
-Contains:
+# Contains:
 
 customer_id
 first_name
@@ -263,7 +263,7 @@ total_revenue
 total_orders
 E-Commerce Sales
 
-Location:
+# Location:
 
 s3://emr-ecommerce-2026/curated/ecommerce_sales/
 
@@ -273,17 +273,17 @@ Athena and Glue Data Catalog
 
 AWS Glue Data Catalog is used to store metadata for the curated Parquet datasets.
 
-Database:
+## Database:
 
 emr_ecommerce_db
 
-Tables:
+# Tables:
 
 category_sales
 customer_sales
 ecommerce_sales
 
-The ecommerce_sales table uses:
+# The ecommerce_sales table uses:
 
 order_year
 order_month
@@ -292,16 +292,18 @@ as partitions.
 
 Athena can then query the curated Parquet data directly from S3.
 
-Athena Validation Queries
-1. Total Records
+## Athena Validation Queries
+# 1. Total Records
 SELECT
     COUNT(*) AS total_records
 FROM emr_ecommerce_db.ecommerce_sales;
-2. Total Revenue
+
+# 2. Total Revenue
 SELECT
     SUM(revenue) AS total_revenue
 FROM emr_ecommerce_db.ecommerce_sales;
-3. Revenue by Category
+
+# 3. Revenue by Category
 SELECT
     category,
     SUM(revenue) AS total_revenue,
@@ -309,7 +311,8 @@ SELECT
 FROM emr_ecommerce_db.ecommerce_sales
 GROUP BY category
 ORDER BY total_revenue DESC;
-4. Revenue by Customer
+
+# 4. Revenue by Customer
 SELECT
     customer_id,
     first_name,
@@ -322,7 +325,8 @@ GROUP BY
     first_name,
     last_name
 ORDER BY total_revenue DESC;
-IAM and Security
+
+## IAM and Security
 
 The project uses IAM roles to control access to AWS resources.
 
@@ -336,21 +340,21 @@ EMR-Ecommerce-EC2-Role
 
 The role is designed following the principle of least privilege and provides access to the project S3 bucket.
 
-Required S3 permissions include:
+## Required S3 permissions include:
 
 s3:ListBucket
 s3:GetObject
 s3:PutObject
 s3:DeleteObject
 
-The intended bucket is:
+# The intended bucket is:
 
 s3://emr-ecommerce-2026/
 EMR Cluster Configuration
 
 The project uses Amazon EMR with Apache Spark.
 
-Example learning configuration:
+## Example learning configuration:
 
 EMR Release: EMR 7.x
 Application: Spark
@@ -364,11 +368,11 @@ SSH Access
 
 The EMR Primary node can be accessed through SSH for development and troubleshooting.
 
-The project uses an EC2 key pair:
+## The project uses an EC2 key pair:
 
 emrproject1
 
-SSH access uses:
+# SSH access uses:
 
 Protocol: TCP
 Port: 22
@@ -376,18 +380,19 @@ Source: My IP
 
 This restricts SSH access to the user's current public IP instead of opening SSH to the entire internet.
 
-Example SSH command:
+# Example SSH command:
 
 ssh -i "emrproject1.pem" hadoop@<EMR-PRIMARY-PUBLIC-DNS>
 Running the PySpark Job
 
-After connecting to the EMR Primary node:
+# After connecting to the EMR Primary node:
 
 spark-submit s3://emr-ecommerce-2026/scripts/emr_pyspark_etl.py
 
 The PySpark job reads the raw datasets from S3 and writes the transformed Parquet data to the curated S3 layer.
 
-Project Folder Structure
+## Project Folder Structure
+```text
 emr-ecommerce-ETL-Pipeline/
 │
 ├── Data/
@@ -405,7 +410,9 @@ emr-ecommerce-ETL-Pipeline/
 │   └── athena_validation.sql
 │
 └── README.md
-Key Data Engineering Concepts Demonstrated
+```
+
+## Key Data Engineering Concepts Demonstrated
 Amazon S3 data lake
 Raw and curated data layers
 Amazon EMR
